@@ -173,6 +173,24 @@ public class Hand {
 		return false;
 	}
 
+	public static boolean isNaturalHandRoyalFlush(Hand h, HandScore hs) {
+		hs.setHandStrength(eHandStrength.RoyalFlush.getHandStrength());
+		boolean bHandCheck = false;
+		
+		if((isFlush(h) == true) && (isStraight(h) == true) &&
+			(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank().getiRankNbr() == 14) &&
+			!(h.getCardsInHand().contains(eRank.JOKER)))
+		
+		{
+			bHandCheck =true;
+			hs.setHandStrength(eHandStrength.RoyalFlush.getHandStrength());
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank().getiRankNbr());
+			hs.setLoHand(0);
+		}
+		
+		return bHandCheck;
+	}
+	
 	public static boolean isHandRoyalFlush(Hand h, HandScore hs) {
 		hs.setHandStrength(eHandStrength.RoyalFlush.getHandStrength());
 		boolean bHandCheck = false;
@@ -465,4 +483,8 @@ public class Hand {
 		return bHandCheck;
 	}
 
+	public static Hand PickBestHand(ArrayList<Hand>Hands)throws HandException
+	{
+		return null;
+	}
 }
