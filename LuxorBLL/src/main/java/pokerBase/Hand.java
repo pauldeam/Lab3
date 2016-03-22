@@ -159,7 +159,17 @@ public class Hand {
 	}
 
 	public static boolean isHandFiveOfAKind(Hand h, HandScore hs) {
-		hs.setHandStrength(eHandStrength.FiveOfAKind.getHandStrength());
+		boolean bHandCheck = false;
+		
+		if (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == 
+				h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank()) 
+		{
+			bHandCheck =true;
+			hs.setHandStrength(eHandStrength.FiveOfAKind.getHandStrength());
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank().getiRankNbr());
+			hs.setLoHand(0);
+		}
+		
 		return false;
 	}
 
